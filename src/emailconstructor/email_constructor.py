@@ -26,13 +26,13 @@ class EmailConstructor:
         """Initializes the `EmailConstructor`.
 
         Args:
-            smtp_server_url (str): The URL of the SMTP email server (i.e. smtp.gmail.com).
-            smtp_server_port (int): The SMTP port number to use.
-            sender_address (str): The email address of the sender.
-            primary_recipients (list[str], optional): A list of primary recipient email addresses. Defaults to [].
-            cc_recipients (list[str], optional): A list of CC recipient email addresses. Defaults to [].
-            subject (str | None, optional): The email message subject. Defaults to None.
-            attachments (list[str], optional): A list of file paths for email attachments. Defaults to [].
+            smtp_server_url: The URL of the SMTP email server (i.e. smtp.gmail.com).
+            smtp_server_port: The SMTP port number to use.
+            sender_address: The email address of the sender.
+            primary_recipients: A list of primary recipient email addresses. Defaults to [].
+            cc_recipients: A list of CC recipient email addresses. Defaults to [].
+            subject: The email message subject. Defaults to None.
+            attachments: A list of file paths for email attachments. Defaults to [].
         """
 
         self.body = ""
@@ -61,7 +61,7 @@ class EmailConstructor:
         """Adds some string content to the email message.
 
         Args:
-            content (str): Content to be added.
+            content: Content to be added.
         """
 
         self.body += content
@@ -70,7 +70,7 @@ class EmailConstructor:
         """Adds the specified number of line break tags to the email body.
 
         Args:
-            count (int, optional): The number of line break tags to add. Defaults to 1.
+            count: The number of line break tags to add. Defaults to 1.
 
         Raises:
             ValueError: If the provided `count` argument is less than 1.
@@ -85,7 +85,7 @@ class EmailConstructor:
         """Returns a context manager class that opens and closes a `<strong>` tag within the email body.
 
         Returns:
-            _StrongTag: A context manager class for the tag.
+            A context manager class for the tag.
         """
 
         return _StrongTag(self)
@@ -94,7 +94,7 @@ class EmailConstructor:
         """Returns a context manager class that opens and closes a `<i>` tag within the email body.
 
         Returns:
-            _ItalicsTag: A context manager class for the tag.
+            A context manager class for the tag.
         """
 
         return _ItalicsTag(self)
@@ -103,7 +103,7 @@ class EmailConstructor:
         """Returns a context manager class that opens and closes a `<u>` tag within the email body.
 
         Returns:
-            _UnderlineTag: A context manager class for the tag.
+            A context manager class for the tag.
         """
 
         return _UnderlineTag(self)
@@ -112,7 +112,7 @@ class EmailConstructor:
         """Returns a context manager class that opens and closes a `<strong>` tag within the email body.
 
         Returns:
-            _StrongTag: A context manager class for the tag.
+            A context manager class for the tag.
         """
 
         return _LinkTag(self, href, style)
@@ -121,10 +121,10 @@ class EmailConstructor:
         """Returns a context manager class that opens and closes a `<p>` tag within the email body.
 
         Args:
-            style (dict[str, Any], optional): A dict containing CSS style properties and values. Defaults to {}.
+            style: A dict containing CSS style properties and values. Defaults to {}.
 
         Returns:
-            _ParagraphTag: A context manager class for the tag.
+            A context manager class for the tag.
         """
 
         return _ParagraphTag(self, style)
@@ -133,10 +133,10 @@ class EmailConstructor:
         """Returns a context manager class that opens and closes a `<span>` tag within the email body.
 
         Args:
-            style (dict[str, Any], optional): A dict containing CSS style properties and values. Defaults to {}.
+            style: A dict containing CSS style properties and values. Defaults to {}.
 
         Returns:
-            _SpanTag: A context manager class for the tag.
+            A context manager class for the tag.
         """
 
         return _SpanTag(self, style)
@@ -145,10 +145,10 @@ class EmailConstructor:
         """Returns a context manager class that opens and closes a `<div>` tag within the email body.
 
         Args:
-            style (dict[str, Any], optional): A dict containing CSS style properties and values. Defaults to {}.
+            style: A dict containing CSS style properties and values. Defaults to {}.
 
         Returns:
-            _DivTag: A context manager class for the tag.
+            A context manager class for the tag.
         """
 
         return _DivTag(self, style)
@@ -157,10 +157,10 @@ class EmailConstructor:
         """Returns a context manager class that opens and closes a `<table>` tag within the email body.
 
         Args:
-            style (dict[str, Any], optional): A dict containing CSS style properties and values. Defaults to {}.
+            style: A dict containing CSS style properties and values. Defaults to {}.
 
         Returns:
-            _TableTag: A context manager class for the tag.
+            A context manager class for the tag.
         """
 
         return _Table(self, style)
@@ -169,10 +169,10 @@ class EmailConstructor:
         """Returns a context manager class that opens and closes a `<thead>` tag within the email body.
 
         Args:
-            style (dict[str, Any], optional): A dict containing CSS style properties and values. Defaults to {}.
+            style: A dict containing CSS style properties and values. Defaults to {}.
 
         Returns:
-            _TableHead: A context manager class for the tag.
+            A context manager class for the tag.
         """
 
         return _TableHead(self, style)
@@ -181,10 +181,10 @@ class EmailConstructor:
         """Returns a context manager class that opens and closes a `<tr>` tag within the email body.
 
         Args:
-            style (dict[str, Any], optional): A dict containing CSS style properties and values. Defaults to {}.
+            style: A dict containing CSS style properties and values. Defaults to {}.
 
         Returns:
-            _TableRow: A context manager class for the tag.
+            A context manager class for the tag.
         """
 
         return _TableRow(self, style)
@@ -193,10 +193,10 @@ class EmailConstructor:
         """Returns a context manager class that opens and closes a `<th>` tag within the email body.
 
         Args:
-            style (dict[str, Any], optional): A dict containing CSS style properties and values. Defaults to {}.
+            style: A dict containing CSS style properties and values. Defaults to {}.
 
         Returns:
-            _TableHeader: A context manager class for the tag.
+            A context manager class for the tag.
         """
 
         return _TableHeader(self, style)
@@ -205,10 +205,10 @@ class EmailConstructor:
         """Returns a context manager class that opens and closes a `<tbody>` tag within the email body.
 
         Args:
-            style (dict[str, Any], optional): A dict containing CSS style properties and values. Defaults to {}.
+            style: A dict containing CSS style properties and values. Defaults to {}.
 
         Returns:
-            _TableBody: A context manager class for the tag.
+            A context manager class for the tag.
         """
 
         return _TableBody(self, style)
@@ -217,10 +217,10 @@ class EmailConstructor:
         """Returns a context manager class that opens and closes a `<td>` tag within the email body.
 
         Args:
-            style (dict[str, Any], optional): A dict containing CSS style properties and values. Defaults to {}.
+            style: A dict containing CSS style properties and values. Defaults to {}.
 
         Returns:
-            _TableDate: A context manager class for the tag.
+            A context manager class for the tag.
         """
 
         return _TableData(self, style)
@@ -229,10 +229,10 @@ class EmailConstructor:
         """Returns a context manager class that opens and closes a `<ul>` tag within the email body.
 
         Args:
-            style (dict[str, Any], optional): A dict containing CSS style properties and values. Defaults to {}.
+            style: A dict containing CSS style properties and values. Defaults to {}.
 
         Returns:
-            _UnorderedList: A context manager class for the tag.
+            A context manager class for the tag.
         """
 
         return _UnorderedList(self, style)
@@ -241,10 +241,10 @@ class EmailConstructor:
         """Returns a context manager class that opens and closes a `<li>` tag within the email body.
 
         Args:
-            style (dict[str, Any], optional): A dict containing CSS style properties and values. Defaults to {}.
+            style: A dict containing CSS style properties and values. Defaults to {}.
 
         Returns:
-            _ListItem: A context manager class for the tag.
+            A context manager class for the tag.
         """
 
         return _ListItem(self, style)
@@ -264,13 +264,13 @@ class EmailConstructor:
         """Builds a table from the provided data within the email body.
 
         Args:
-            data (Sequence[Sequence[T]] | Sequence[OrderedDict[Any, T]]): The data to use to build the rows within the table. This can either be a two dimensional data structure (i.e. a list of lists) or a sequence of dicts.
-            headers (Sequence[Any] | None, optional): A sequence of values to use for the table's column headers. If `headers` is not provided and the `data` is in a sequence of ordered dicts format, the dict key values will be used as column headers. Passing an empty sequence value such as `[]` will suppress this behavior. Defaults to None.
-            table_style (dict[str, Any], optional): A dict containing CSS style properties and values to apply to the table. Defaults to {}.
-            header_style (dict[str, Any], optional): A dict containing CSS style properties and values to apply to the table header. Defaults to {}.
-            body_style (dict[str, Any], optional): A dict containing CSS style properties and values to apply to the table body. Defaults to {}.
-            get_row_style (Callable[[Sequence[T]], dict[str, Any]] | None, optional): An optional function that accepts a row of data type `Sequence[_T]` and returns a dict of CSS style properties and values to apply to the row. Can be used to conditionally style entire rows by value. Defaults to None.
-            get_cell_style (Callable[[T], dict[str, Any]] | None, optional): An optional function that accepts a cell of data type `_T` and returns a dict of CSS style properties and values to apply to the cell. Can be used to conditionally style cells by value. Defaults to None.
+            data: The data to use to build the rows within the table. This can either be a two dimensional data structure (i.e. a list of lists) or a sequence of dicts.
+            headers: A sequence of values to use for the table's column headers. If `headers` is not provided and the `data` is in a sequence of ordered dicts format, the dict key values will be used as column headers. Passing an empty sequence value such as `[]` will suppress this behavior. Defaults to None.
+            table_style: A dict containing CSS style properties and values to apply to the table. Defaults to {}.
+            header_style: A dict containing CSS style properties and values to apply to the table header. Defaults to {}.
+            body_style: A dict containing CSS style properties and values to apply to the table body. Defaults to {}.
+            get_row_style: An optional function that accepts a row of data type `Sequence[_T]` and returns a dict of CSS style properties and values to apply to the row. Can be used to conditionally style entire rows by value. Defaults to None.
+            get_cell_style: An optional function that accepts a cell of data type `_T` and returns a dict of CSS style properties and values to apply to the cell. Can be used to conditionally style cells by value. Defaults to None.
         """
 
         dict_data = tuple(row for row in data if isinstance(row, dict))
@@ -318,10 +318,11 @@ class EmailConstructor:
         """Constructs a simple unordered (bulleted) list from a sequence of data.
 
         Args:
-            data (Sequence[T]): The sequence of data to build the list from.
-            list_style (dict[str, Any], optional): A dict containing CSS style properties and values to apply to the list. Defaults to {}.
-            get_list_item_style (Callable[[T], dict[str, Any]] | None, optional): An optional function that accepts an item in the list of type `_T` and returns a dict of CSS style properties and values to apply to the list item. Can be used to conditionally style list items by value. Defaults to None.
+            data: The sequence of data to build the list from.
+            list_style: A dict containing CSS style properties and values to apply to the list. Defaults to {}.
+            get_list_item_style: An optional function that accepts an item in the list of type `T` and returns a dict of CSS style properties and values to apply to the list item. Can be used to conditionally style list items by value. Defaults to None.
         """
+
         if not data:
             return
 
@@ -343,8 +344,8 @@ class EmailConstructor:
         """Inserts an inline image into the email body.
 
         Args:
-            image_path (str): The file path to the image.
-            style (dict[str, Any], optional): A dict containing CSS style properties and values to apply to the image. Defaults to {}.
+            image_path: The file path to the image.
+            style: A dict containing CSS style properties and values to apply to the image. Defaults to {}.
         """
 
         attributes = {"src": f"cid:{image_path}"}
@@ -356,7 +357,7 @@ class EmailConstructor:
         """Logs into the sender's email address using the provided password and sends the current email body content.
 
         Args:
-            sender_login_password (str): The password for the sender's email account. For security, the password is not stored after use.
+            sender_login_password: The password for the sender's email account. For security, the password is not stored after use.
 
         Raises:
             RuntimeError: If no primary recipience email addresses are set.
