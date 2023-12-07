@@ -6,11 +6,7 @@ from email.mime.base import MIMEBase
 from email.mime.image import MIMEImage
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
-from typing import Any, Callable, Sequence, TypeVar
-
-__version__ = "1.0.0"
-
-_T = TypeVar("_T")
+from typing import Any, Callable, Sequence
 
 
 class EmailConstructor:
@@ -253,26 +249,28 @@ class EmailConstructor:
 
         return _ListItem(self, style)
 
-    def build_table(
+    def build_table[
+        T
+    ](
         self,
-        data: Sequence[Sequence[_T]] | Sequence[OrderedDict[Any, _T]],
+        data: Sequence[Sequence[T]] | Sequence[OrderedDict[Any, T]],
         headers: Sequence[Any] | None = None,
         table_style: dict[str, Any] = {},
         header_style: dict[str, Any] = {},
         body_style: dict[str, Any] = {},
-        get_row_style: Callable[[Sequence[_T]], dict[str, Any]] | None = None,
-        get_cell_style: Callable[[_T], dict[str, Any]] | None = None,
+        get_row_style: Callable[[Sequence[T]], dict[str, Any]] | None = None,
+        get_cell_style: Callable[[T], dict[str, Any]] | None = None,
     ):
         """Builds a table from the provided data within the email body.
 
         Args:
-            data (Sequence[Sequence[_T]] | Sequence[OrderedDict[Any, _T]]): The data to use to build the rows within the table. This can either be a two dimensional data structure (i.e. a list of lists) or a sequence of dicts.
+            data (Sequence[Sequence[T]] | Sequence[OrderedDict[Any, T]]): The data to use to build the rows within the table. This can either be a two dimensional data structure (i.e. a list of lists) or a sequence of dicts.
             headers (Sequence[Any] | None, optional): A sequence of values to use for the table's column headers. If `headers` is not provided and the `data` is in a sequence of ordered dicts format, the dict key values will be used as column headers. Passing an empty sequence value such as `[]` will suppress this behavior. Defaults to None.
             table_style (dict[str, Any], optional): A dict containing CSS style properties and values to apply to the table. Defaults to {}.
             header_style (dict[str, Any], optional): A dict containing CSS style properties and values to apply to the table header. Defaults to {}.
             body_style (dict[str, Any], optional): A dict containing CSS style properties and values to apply to the table body. Defaults to {}.
-            get_row_style (Callable[[Sequence[_T]], dict[str, Any]] | None, optional): An optional function that accepts a row of data type `Sequence[_T]` and returns a dict of CSS style properties and values to apply to the row. Can be used to conditionally style entire rows by value. Defaults to None.
-            get_cell_style (Callable[[_T], dict[str, Any]] | None, optional): An optional function that accepts a cell of data type `_T` and returns a dict of CSS style properties and values to apply to the cell. Can be used to conditionally style cells by value. Defaults to None.
+            get_row_style (Callable[[Sequence[T]], dict[str, Any]] | None, optional): An optional function that accepts a row of data type `Sequence[_T]` and returns a dict of CSS style properties and values to apply to the row. Can be used to conditionally style entire rows by value. Defaults to None.
+            get_cell_style (Callable[[T], dict[str, Any]] | None, optional): An optional function that accepts a cell of data type `_T` and returns a dict of CSS style properties and values to apply to the cell. Can be used to conditionally style cells by value. Defaults to None.
         """
 
         dict_data = tuple(row for row in data if isinstance(row, dict))
@@ -309,18 +307,20 @@ class EmailConstructor:
                                 with self.table_data(cell_style):
                                     self.add(str(cell))
 
-    def build_list(
+    def build_list[
+        T
+    ](
         self,
-        data: Sequence[_T],
+        data: Sequence[T],
         list_style: dict[str, Any] = {},
-        get_list_item_style: Callable[[_T], dict[str, Any]] | None = None,
+        get_list_item_style: Callable[[T], dict[str, Any]] | None = None,
     ):
         """Constructs a simple unordered (bulleted) list from a sequence of data.
 
         Args:
-            data (Sequence[_T]): The sequence of data to build the list from.
+            data (Sequence[T]): The sequence of data to build the list from.
             list_style (dict[str, Any], optional): A dict containing CSS style properties and values to apply to the list. Defaults to {}.
-            get_list_item_style (Callable[[_T], dict[str, Any]] | None, optional): An optional function that accepts an item in the list of type `_T` and returns a dict of CSS style properties and values to apply to the list item. Can be used to conditionally style list items by value. Defaults to None.
+            get_list_item_style (Callable[[T], dict[str, Any]] | None, optional): An optional function that accepts an item in the list of type `_T` and returns a dict of CSS style properties and values to apply to the list item. Can be used to conditionally style list items by value. Defaults to None.
         """
         if not data:
             return
