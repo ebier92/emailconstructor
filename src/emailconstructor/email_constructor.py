@@ -371,7 +371,9 @@ class EmailConstructor:
         email["From"] = self._sender_address
         email["To"] = ";".join(self.primary_recipients)
         email["Cc"] = ";".join(self.cc_recipients)
-        email["Subject"] = self.subject
+
+        if self.subject is not None:
+            email["Subject"] = self.subject
 
         email.attach(MIMEText(self.body, "html"))
 
